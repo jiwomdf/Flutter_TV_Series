@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'di/datasource_injection.dart' as datasourceDi;
+import 'di/provider_injection.dart' as providerDi;
+import 'di/repository_injection.dart' as repositoryDi;
+import 'di/usecase_injection.dart' as useCaseDi;
 
 void main() {
+  datasourceDi.init();
+  providerDi.init();
+  repositoryDi.init();
+  useCaseDi.init();
   runApp(const MyApp());
 }
 
@@ -11,18 +18,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-
-      ],
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
-        home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
       ),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
