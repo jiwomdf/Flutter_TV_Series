@@ -3,12 +3,12 @@ import '../../common/failure.dart';
 import '../entities/movie.dart';
 import '../repositories/movie_repository.dart';
 
-class GetPopularMovies {
+class GetPopularMoviesUseCase {
   final MovieRepository repository;
 
-  GetPopularMovies(this.repository);
+  GetPopularMoviesUseCase(this.repository);
 
-  Future<Either<Failure, List<Movie>>> execute() {
+  Future<Either<Failure, List<Movie>>> getPopularMovies() {
     return repository.getPopularMovies();
   }
 }

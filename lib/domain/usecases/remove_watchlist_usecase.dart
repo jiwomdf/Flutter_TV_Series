@@ -3,12 +3,12 @@ import '../../common/failure.dart';
 import '../entities/movie_detail.dart';
 import '../repositories/movie_repository.dart';
 
-class RemoveWatchlist {
+class RemoveWatchlistUseCase {
   final MovieRepository repository;
 
-  RemoveWatchlist(this.repository);
+  RemoveWatchlistUseCase(this.repository);
 
-  Future<Either<Failure, String>> execute(MovieDetail movie) {
+  Future<Either<Failure, String>> removeWatchlist(MovieDetail movie) {
     return repository.removeWatchlist(movie);
   }
 }

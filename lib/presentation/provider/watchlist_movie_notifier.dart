@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 
 import '../../common/state_enum.dart';
 import '../../domain/entities/movie.dart';
-import '../../domain/usecases/get_watchlist_movies.dart';
+import '../../domain/usecases/get_watchlist_movies_usecase.dart';
 
 class WatchlistMovieNotifier extends ChangeNotifier {
 
@@ -11,13 +11,13 @@ class WatchlistMovieNotifier extends ChangeNotifier {
 
   WatchlistMovieNotifier({required this.getWatchlistMovies});
 
-  final GetWatchlistMovies getWatchlistMovies;
+  final GetWatchlistMoviesUseCase getWatchlistMovies;
 
   Future<void> fetchWatchlistMovies() async {
     _watchlistState = SealedState.loading();
     notifyListeners();
 
-    final result = await getWatchlistMovies.execute();
+    final result = await getWatchlistMovies.getWatchlistMovies();
     result.fold(
       (failure) {
         _watchlistState = SealedState.error(failure.message);

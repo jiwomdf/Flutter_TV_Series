@@ -3,12 +3,13 @@ import '../../common/failure.dart';
 import '../entities/movie.dart';
 import '../repositories/movie_repository.dart';
 
-class GetMovieRecommendations {
+
+class GetNowPlayingMoviesUseCase {
   final MovieRepository repository;
 
-  GetMovieRecommendations(this.repository);
+  GetNowPlayingMoviesUseCase(this.repository);
 
-  Future<Either<Failure, List<Movie>>> execute(id) {
-    return repository.getMovieRecommendations(id);
+  Future<Either<Failure, List<Movie>>> getNowPlayingMovies() {
+    return repository.getNowPlayingMovies();
   }
 }

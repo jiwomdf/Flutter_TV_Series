@@ -3,21 +3,21 @@ import 'package:flutter/material.dart';
 import '../../common/state_enum.dart';
 import '../../domain/entities/movie.dart';
 import '../../domain/entities/movie_detail.dart';
-import '../../domain/usecases/get_movie_detail.dart';
-import '../../domain/usecases/get_movie_recommendations.dart';
-import '../../domain/usecases/get_watchlist_status.dart';
-import '../../domain/usecases/remove_watchlist.dart';
-import '../../domain/usecases/save_watchlist.dart';
+import '../../domain/usecases/get_movie_detail_usecase.dart';
+import '../../domain/usecases/get_movie_recommendations_usecase.dart';
+import '../../domain/usecases/get_watchlist_status_usecase.dart';
+import '../../domain/usecases/remove_watchlist_usecase.dart';
+import '../../domain/usecases/save_watchlist_usecase.dart';
 
 class MovieDetailNotifier extends ChangeNotifier {
   static const watchlistAddSuccessMessage = 'Added to Watchlist';
   static const watchlistRemoveSuccessMessage = 'Removed from Watchlist';
 
-  final GetMovieDetail getMovieDetail;
+  final GetMovieDetailUseCase getMovieDetail;
   final GetMovieRecommendations getMovieRecommendations;
-  final GetWatchListStatus getWatchListStatus;
-  final SaveWatchlist saveWatchlist;
-  final RemoveWatchlist removeWatchlist;
+  final GetWatchListStatusUseCase getWatchListStatus;
+  final SaveWatchlistUseCase saveWatchlist;
+  final RemoveWatchlistUseCase removeWatchlist;
 
   MovieDetailNotifier({
     required this.getMovieDetail,
@@ -42,8 +42,8 @@ class MovieDetailNotifier extends ChangeNotifier {
   Future<void> fetchMovieDetail(int id) async {
     _movieState = SealedState.loading();
     notifyListeners();
-    final detailResult = await getMovieDetail.execute(id);
-    final recommendationResult = await getMovieRecommendations.execute(id);
+    final detailResult = await getMovieDetail.getMovieDetail(id);
+    final recommendationResult = await getMovieRecommendations.getMovieRecommendations(id);
     detailResult.fold(
       (failure) {
         _movieState = SealedState.error(failure.message);
@@ -68,7 +68,7 @@ class MovieDetailNotifier extends ChangeNotifier {
   }
 
   Future<void> addWatchlist(MovieDetail movie) async {
-    final result = await saveWatchlist.execute(movie);
+    final result = await saveWatchlist.saveWatchlist(movie);
 
     await result.fold(
       (failure) async {
@@ -83,7 +83,7 @@ class MovieDetailNotifier extends ChangeNotifier {
   }
 
   Future<void> removeFromWatchlist(MovieDetail movie) async {
-    final result = await removeWatchlist.execute(movie);
+    final result = await removeWatchlist.removeWatchlist(movie);
 
     await result.fold(
       (failure) async {
@@ -98,7 +98,7 @@ class MovieDetailNotifier extends ChangeNotifier {
   }
 
   Future<void> loadWatchlistStatus(int id) async {
-    final result = await getWatchListStatus.execute(id);
+    final result = await getWatchListStatus.isAddedToWatchlist(id);
     _isAddedToWatchlist = result;
     notifyListeners();
   }

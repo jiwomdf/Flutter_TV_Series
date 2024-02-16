@@ -3,12 +3,12 @@ import '../../common/failure.dart';
 import '../entities/movie_detail.dart';
 import '../repositories/movie_repository.dart';
 
-class SaveWatchlist {
+class SaveWatchlistUseCase {
   final MovieRepository repository;
 
-  SaveWatchlist(this.repository);
+  SaveWatchlistUseCase(this.repository);
 
-  Future<Either<Failure, String>> execute(MovieDetail movie) {
+  Future<Either<Failure, String>> saveWatchlist(MovieDetail movie) {
     return repository.saveWatchlist(movie);
   }
 }

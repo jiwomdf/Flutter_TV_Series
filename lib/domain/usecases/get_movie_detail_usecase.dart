@@ -3,12 +3,12 @@ import 'package:flutter_tv_series/common/failure.dart';
 import 'package:flutter_tv_series/domain/entities/movie_detail.dart';
 import 'package:flutter_tv_series/domain/repositories/movie_repository.dart';
 
-class GetMovieDetail {
+class GetMovieDetailUseCase {
   final MovieRepository repository;
 
-  GetMovieDetail(this.repository);
+  GetMovieDetailUseCase(this.repository);
 
-  Future<Either<Failure, MovieDetail>> execute(int id) {
+  Future<Either<Failure, MovieDetail>> getMovieDetail(int id) {
     return repository.getMovieDetail(id);
   }
 }

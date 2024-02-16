@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import '../../common/state_enum.dart';
 import '../../domain/entities/movie.dart';
-import '../../domain/usecases/get_now_playing_movies.dart';
-import '../../domain/usecases/get_popular_movies.dart';
-import '../../domain/usecases/get_top_rated_movies.dart';
+import '../../domain/usecases/get_now_playing_movies_usecase.dart';
+import '../../domain/usecases/get_popular_movies_usecase.dart';
+import '../../domain/usecases/get_top_rated_movies_usecase.dart';
 
 class MovieListProvider extends ChangeNotifier {
 
-  final GetNowPlayingMovies getNowPlayingMovies;
-  final GetPopularMovies getPopularMovies;
-  final GetTopRatedMovies getTopRatedMovies;
+  final GetNowPlayingMoviesUseCase getNowPlayingMovies;
+  final GetPopularMoviesUseCase getPopularMovies;
+  final GetTopRatedMoviesUseCase getTopRatedMovies;
 
   MovieListProvider({
     required this.getNowPlayingMovies,
@@ -30,7 +30,7 @@ class MovieListProvider extends ChangeNotifier {
     _nowPlayingState = SealedState.loading();
     notifyListeners();
 
-    final result = await getNowPlayingMovies.execute();
+    final result = await getNowPlayingMovies.getNowPlayingMovies();
     result.fold(
       (failure) {
         _nowPlayingState = SealedState.error(failure.message);
@@ -47,7 +47,7 @@ class MovieListProvider extends ChangeNotifier {
     _popularMoviesState = SealedState.loading();
     notifyListeners();
 
-    final result = await getPopularMovies.execute();
+    final result = await getPopularMovies.getPopularMovies();
     result.fold(
       (failure) {
         _popularMoviesState = SealedState.error(failure.message);
@@ -64,7 +64,7 @@ class MovieListProvider extends ChangeNotifier {
     _topRatedMoviesState = SealedState.loading();
     notifyListeners();
 
-    final result = await getTopRatedMovies.execute();
+    final result = await getTopRatedMovies.getTopRatedMovies();
     result.fold(
       (failure) {
         _topRatedMoviesState = SealedState.error(failure.message);

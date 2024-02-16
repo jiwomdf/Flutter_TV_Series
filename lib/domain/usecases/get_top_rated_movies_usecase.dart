@@ -3,12 +3,12 @@ import '../../common/failure.dart';
 import '../entities/movie.dart';
 import '../repositories/movie_repository.dart';
 
-class SearchMovies {
+class GetTopRatedMoviesUseCase {
   final MovieRepository repository;
 
-  SearchMovies(this.repository);
+  GetTopRatedMoviesUseCase(this.repository);
 
-  Future<Either<Failure, List<Movie>>> execute(String query) {
-    return repository.searchMovies(query);
+  Future<Either<Failure, List<Movie>>> getTopRatedMovies() {
+    return repository.getTopRatedMovies();
   }
 }

@@ -2,10 +2,10 @@ import 'package:flutter/foundation.dart';
 
 import '../../common/state_enum.dart';
 import '../../domain/entities/movie.dart';
-import '../../domain/usecases/get_popular_movies.dart';
+import '../../domain/usecases/get_popular_movies_usecase.dart';
 
 class PopularMoviesNotifier extends ChangeNotifier {
-  final GetPopularMovies getPopularMovies;
+  final GetPopularMoviesUseCase getPopularMovies;
 
   PopularMoviesNotifier(this.getPopularMovies);
 
@@ -16,7 +16,7 @@ class PopularMoviesNotifier extends ChangeNotifier {
     _state = SealedState.loading();
     notifyListeners();
 
-    final result = await getPopularMovies.execute();
+    final result = await getPopularMovies.getPopularMovies();
 
     result.fold(
       (failure) {

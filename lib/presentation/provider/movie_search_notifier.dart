@@ -2,10 +2,10 @@ import 'package:flutter/foundation.dart';
 
 import '../../common/state_enum.dart';
 import '../../domain/entities/movie.dart';
-import '../../domain/usecases/search_movies.dart';
+import '../../domain/usecases/search_movies_usecase.dart';
 
 class MovieSearchNotifier extends ChangeNotifier {
-  final SearchMovies searchMovies;
+  final SearchMoviesUseCase searchMovies;
 
   MovieSearchNotifier({required this.searchMovies});
 
@@ -16,7 +16,7 @@ class MovieSearchNotifier extends ChangeNotifier {
     _searchState = SealedState.loading();
     notifyListeners();
 
-    final result = await searchMovies.execute(query);
+    final result = await searchMovies.searchMovies(query);
     result.fold(
       (failure) {
         _searchState = SealedState.error(failure.message);
