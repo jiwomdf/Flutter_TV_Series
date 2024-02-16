@@ -11,7 +11,7 @@ final locator = GetIt.instance;
 void init() {
   // provider
   locator.registerFactory(
-        () => MovieListNotifier(
+        () => MovieListProvider(
       getNowPlayingMovies: locator(),
       getPopularMovies: locator(),
       getTopRatedMovies: locator(),

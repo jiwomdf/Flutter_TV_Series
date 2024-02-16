@@ -28,7 +28,7 @@ class MovieDetailNotifier extends ChangeNotifier {
   });
 
   SealedState<MovieDetail> _movieState = SealedState.loading();
-    get movieState => _movieState;
+  SealedState<MovieDetail> get movieState => _movieState;
 
   SealedState<List<Movie>> _recommendationState = SealedState.loading();
   SealedState<List<Movie>> get recommendationState => _recommendationState;

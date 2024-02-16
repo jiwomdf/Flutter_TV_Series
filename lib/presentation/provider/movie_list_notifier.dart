@@ -5,25 +5,25 @@ import '../../domain/usecases/get_now_playing_movies.dart';
 import '../../domain/usecases/get_popular_movies.dart';
 import '../../domain/usecases/get_top_rated_movies.dart';
 
-class MovieListNotifier extends ChangeNotifier {
+class MovieListProvider extends ChangeNotifier {
 
   final GetNowPlayingMovies getNowPlayingMovies;
   final GetPopularMovies getPopularMovies;
   final GetTopRatedMovies getTopRatedMovies;
 
-  MovieListNotifier({
+  MovieListProvider({
     required this.getNowPlayingMovies,
     required this.getPopularMovies,
     required this.getTopRatedMovies,
   });
 
-  SealedState<List<Movie>> _nowPlayingState = SealedState.loading();
+  SealedState<List<Movie>> _nowPlayingState = LoadingState();
   SealedState<List<Movie>> get nowPlayingState => _nowPlayingState;
 
-  SealedState<List<Movie>> _popularMoviesState = SealedState<List<Movie>>.loading();
+  SealedState<List<Movie>> _popularMoviesState = LoadingState();
   SealedState<List<Movie>> get popularMoviesState => _popularMoviesState;
 
-  SealedState<List<Movie>> _topRatedMoviesState = SealedState<List<Movie>>.loading();
+  SealedState<List<Movie>> _topRatedMoviesState = LoadingState();
   SealedState<List<Movie>> get topRatedMoviesState => _topRatedMoviesState;
 
   Future<void> fetchNowPlayingMovies() async {

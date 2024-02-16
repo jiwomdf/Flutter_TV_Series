@@ -1,21 +1,21 @@
-class SealedState<T> {
-  SealedState._();
+sealed class SealedState<T> {
+  const SealedState();
 
   factory SealedState.loading() = LoadingState;
-  factory SealedState.success(T foo) = SuccessState;
-  factory SealedState.error(String foo) = ErrorState;
+  factory SealedState.success(T value) = SuccessState;
+  factory SealedState.error(String value) = ErrorState;
 }
 
 class LoadingState<T> extends SealedState<T> {
-  LoadingState(): super._();
+  LoadingState();
 }
 
 class ErrorState<T> extends SealedState<T> {
-  ErrorState(this.msg): super._();
   final String msg;
+  ErrorState(this.msg);
 }
 
 class SuccessState<T> extends SealedState<T> {
-  SuccessState(this.value): super._();
   final T value;
+  SuccessState(this.value);
 }
