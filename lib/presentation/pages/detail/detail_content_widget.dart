@@ -38,7 +38,7 @@ class DetailContent extends StatelessWidget {
             builder: (context, scrollController) {
               return Container(
                 decoration: BoxDecoration(
-                  color: kRichBlack,
+                  color: kWhite,
                   borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
                 ),
                 padding: const EdgeInsets.only(
@@ -211,7 +211,6 @@ class DetailContent extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: CircleAvatar(
-            backgroundColor: kRichBlack,
             foregroundColor: Colors.white,
             child: IconButton(
               icon: Icon(Icons.arrow_back),

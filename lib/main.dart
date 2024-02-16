@@ -61,12 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ],
       child: MaterialApp(
         title: 'TV Series',
-        theme: ThemeData.dark().copyWith(
-          colorScheme: kColorScheme,
-          primaryColor: kRichBlack,
-          scaffoldBackgroundColor: kRichBlack,
-          textTheme: kTextTheme,
-        ),
+        theme: ThemeData.light(),
         home: HomeMovieScreen(),
         navigatorObservers: [routeObserver],
         onGenerateRoute: (RouteSettings settings) {
