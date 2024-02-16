@@ -6,17 +6,17 @@ import 'package:provider/provider.dart';
 import '../../provider/movie_detail_notifier.dart';
 import 'detail_content_widget.dart';
 
-class MovieDetailPage extends StatefulWidget {
+class MovieDetailScreen extends StatefulWidget {
   static const ROUTE_NAME = '/detail';
 
   final int id;
-  MovieDetailPage({required this.id});
+  MovieDetailScreen({required this.id});
 
   @override
-  _MovieDetailPageState createState() => _MovieDetailPageState();
+  _MovieDetailScreenState createState() => _MovieDetailScreenState();
 }
 
-class _MovieDetailPageState extends State<MovieDetailPage> {
+class _MovieDetailScreenState extends State<MovieDetailScreen> {
   @override
   void initState() {
     super.initState();

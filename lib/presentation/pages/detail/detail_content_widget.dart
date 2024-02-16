@@ -10,7 +10,7 @@ import '../../../domain/entities/genre.dart';
 import '../../../domain/entities/movie.dart';
 import '../../../domain/entities/movie_detail.dart';
 import '../../provider/movie_detail_notifier.dart';
-import 'movie_detail_page.dart';
+import 'movie_detail_screen.dart';
 
 class DetailContent extends StatelessWidget {
   final MovieDetail movie;
@@ -158,7 +158,7 @@ class DetailContent extends StatelessWidget {
                                             onTap: () {
                                               Navigator.pushReplacementNamed(
                                                 context,
-                                                MovieDetailPage.ROUTE_NAME,
+                                                MovieDetailScreen.ROUTE_NAME,
                                                 arguments: movie.id,
                                               );
                                             },

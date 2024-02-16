@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../../../common/constants.dart';
 import '../../../domain/entities/movie.dart';
-import '../detail/movie_detail_page.dart';
+import '../detail/movie_detail_screen.dart';
 
 class MovieList extends StatelessWidget {
   final List<Movie> movies;
@@ -21,7 +21,7 @@ class MovieList extends StatelessWidget {
             padding: const EdgeInsets.all(8),
             child: InkWell(
               onTap: () {
-                Navigator.pushNamed(context, MovieDetailPage.ROUTE_NAME, arguments: movie.id);
+                Navigator.pushNamed(context, MovieDetailScreen.ROUTE_NAME, arguments: movie.id);
               },
               child: ClipRRect(
                 borderRadius: BorderRadius.all(Radius.circular(16)),

@@ -9,24 +9,21 @@ class MovieSearchNotifier extends ChangeNotifier {
 
   MovieSearchNotifier({required this.searchMovies});
 
-  SealedState<List<Movie>> _state = SealedState.loading();
-    get state => _state;
-
-  List<Movie> _searchResult = [];
-    get searchResult => _searchResult;
+  SealedState<List<Movie>> _searchState = SealedState.success([]);
+  SealedState<List<Movie>> get searchState => _searchState;
 
   Future<void> fetchMovieSearch(String query) async {
-    _state = SealedState.loading();
+    _searchState = SealedState.loading();
     notifyListeners();
 
     final result = await searchMovies.execute(query);
     result.fold(
       (failure) {
-        _state = SealedState.error(failure.message);
+        _searchState = SealedState.error(failure.message);
         notifyListeners();
       },
       (data) {
-        _state = SealedState.success(data);
+        _searchState = SealedState.success(data);
         notifyListeners();
       },
     );
