@@ -23,19 +23,34 @@ class DetailContent extends StatelessWidget {
     final brightness = MediaQuery.of(context).platformBrightness;
     bool isDarkMode = brightness == Brightness.dark;
     return Scaffold(
-      appBar: appBar(context, movie.title),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            CachedNetworkImage(
-              height: 350,
-              width: screenWidth,
-              fit: BoxFit.cover,
-              imageUrl: 'https://image.tmdb.org/t/p/w500${movie.posterPath}',
-              placeholder: (context, url) => Center(
-                child: CircularProgressIndicator(),
-              ),
-              errorWidget: (context, url, error) => Icon(Icons.error),
+            Stack(
+              children: [
+                CachedNetworkImage(
+                  height: 350,
+                  width: screenWidth,
+                  fit: BoxFit.cover,
+                  imageUrl: 'https://image.tmdb.org/t/p/w500${movie.posterPath}',
+                  placeholder: (context, url) => Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                  errorWidget: (context, url, error) => Icon(Icons.error),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: CircleAvatar(
+                    foregroundColor: Colors.deepPurple,
+                    child: IconButton(
+                      icon: Icon(Icons.arrow_back),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ),
+                )
+              ],
             ),
             Container(
               decoration: BoxDecoration(
@@ -208,16 +223,6 @@ class DetailContent extends StatelessWidget {
         ),
         Text('${movie.voteAverage}')
       ],
-    );
-  }
-
-  AppBar appBar(BuildContext context, String title) {
-    return AppBar(
-      backgroundColor: Colors.grey[200],
-      title: Text(title, style: appTitleLarge),
-      iconTheme: IconThemeData(
-        color: Colors.deepPurple, //change your color here
-      ),
     );
   }
 
