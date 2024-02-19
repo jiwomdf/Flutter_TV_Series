@@ -32,6 +32,7 @@ class DetailContent extends StatelessWidget {
                   height: 350,
                   width: screenWidth,
                   fit: BoxFit.cover,
+                  alignment: Alignment.topCenter,
                   imageUrl: 'https://image.tmdb.org/t/p/w500${movie.posterPath}',
                   placeholder: (context, url) => Center(
                     child: CircularProgressIndicator(),
