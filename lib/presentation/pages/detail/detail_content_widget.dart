@@ -62,7 +62,7 @@ class DetailContent extends StatelessWidget {
               Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(movie.title, style: headlineSmall),
+                    Flexible(child: Text(movie.title, style: headlineSmall)),
                     ElevatedButton(
                       onPressed: () async {
                         final notifier = Provider.of<MovieDetailNotifier>(context, listen: false);
@@ -213,15 +213,11 @@ class DetailContent extends StatelessWidget {
 
   AppBar appBar(BuildContext context, String title) {
     return AppBar(
-      title: Text(title),
-      actions: [
-        IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(Icons.search),
-        )
-      ],
+      backgroundColor: Colors.grey[200],
+      title: Text(title, style: appTitleLarge),
+      iconTheme: IconThemeData(
+        color: Colors.deepPurple, //change your color here
+      ),
     );
   }
 

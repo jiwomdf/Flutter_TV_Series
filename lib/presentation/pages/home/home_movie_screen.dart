@@ -95,10 +95,10 @@ class _HomeMovieScreenState extends State<HomeMovieScreen> {
         children: [
           UserAccountsDrawerHeader(
             currentAccountPicture: CircleAvatar(
-              backgroundImage: AssetImage('assets/circle-g.png'),
+              backgroundImage: AssetImage('assets/avatar.webp'),
             ),
-            accountName: Text('TV Series'),
-            accountEmail: Text('tvseries@gmail.com'),
+            accountName: Text('Amabelle'),
+            accountEmail: Text('Amabelle@gmail.com'),
           ),
           ListTile(
             leading: Icon(Icons.movie),
@@ -128,15 +128,17 @@ class _HomeMovieScreenState extends State<HomeMovieScreen> {
 
   AppBar appBar() {
     return AppBar(
-      title: Text('TV Series'),
+      backgroundColor: Colors.grey[200],
+      title: Text('TV Series', style: appTitleLarge),
       actions: [
         IconButton(
           onPressed: () {
             Navigator.pushNamed(context, SearchScreen.ROUTE_NAME);
           },
-          icon: Icon(Icons.search),
+          icon: Icon(Icons.search, color: Colors.deepPurple),
         )
       ],
+      iconTheme: IconThemeData(color: Colors.deepPurple),
     );
   }
 }

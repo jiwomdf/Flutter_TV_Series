@@ -13,27 +13,35 @@ class SearchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Search'),
+        backgroundColor: Colors.grey[200],
+        title: Text('Search', style: appTitleLarge),
+        iconTheme: IconThemeData(
+          color: Colors.deepPurple, //change your color here
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextField(
-              onSubmitted: (query) {
-                Provider.of<MovieSearchNotifier>(context, listen: false)
-                    .fetchMovieSearch(query);
-              },
-              decoration: InputDecoration(
-                hintText: 'Search title',
-                prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(),
+            SizedBox(
+              height: 55,
+              child: TextField(
+                onSubmitted: (query) {
+                  Provider.of<MovieSearchNotifier>(context, listen: false)
+                      .fetchMovieSearch(query);
+                },
+                decoration: InputDecoration(
+                  hintText: 'Search title',
+                  prefixIcon: Icon(Icons.search),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(20))
+                  ),
+                ),
+                textInputAction: TextInputAction.search,
               ),
-              textInputAction: TextInputAction.search,
             ),
             SizedBox(height: 16),
-            Text('Search Result', style: titleLarge),
             Consumer<MovieSearchNotifier>(
               builder: (context, data, child) {
                 final searchState = data.searchState;
