@@ -33,7 +33,7 @@ class SearchScreen extends StatelessWidget {
               textInputAction: TextInputAction.search,
             ),
             SizedBox(height: 16),
-            Text('Search Result', style: kHeading6),
+            Text('Search Result', style: titleLarge),
             Consumer<MovieSearchNotifier>(
               builder: (context, data, child) {
                 final searchState = data.searchState;

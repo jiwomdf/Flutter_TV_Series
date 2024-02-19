@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import '../../../common/constants.dart';
-import '../../../domain/entities/movie.dart';
-import '../detail/movie_detail_screen.dart';
+import '../../../../common/constants.dart';
+import '../../../../domain/entities/movie.dart';
+import '../../detail/movie_detail_screen.dart';
 
 class MovieList extends StatelessWidget {
   final List<Movie> movies;
@@ -12,7 +12,7 @@ class MovieList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200,
+      height: 230,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
@@ -24,7 +24,7 @@ class MovieList extends StatelessWidget {
                 Navigator.pushNamed(context, MovieDetailScreen.ROUTE_NAME, arguments: movie.id);
               },
               child: ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(16)),
+                borderRadius: BorderRadius.all(Radius.circular(8)),
                 child: CachedNetworkImage(
                   imageUrl: '$BASE_IMAGE_URL${movie.posterPath}',
                   placeholder: (context, url) => Center(

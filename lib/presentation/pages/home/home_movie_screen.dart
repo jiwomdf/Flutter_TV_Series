@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tv_series/common/state_enum.dart';
+import 'package:flutter_tv_series/presentation/pages/home/widgets/movie_banner_widget.dart';
 import 'package:flutter_tv_series/presentation/pages/search/search_screen.dart';
 import 'package:flutter_tv_series/presentation/pages/watchlist/watchlist_movies_screen.dart';
 import 'package:provider/provider.dart';
 import '../../../common/constants.dart';
 import '../../../domain/entities/movie.dart';
 import '../../provider/movie_list_notifier.dart';
-import 'movie_list_widget.dart';
+import 'widgets/movie_list_widget.dart';
 
 class HomeMovieScreen extends StatefulWidget {
   @override
@@ -36,12 +37,12 @@ class _HomeMovieScreenState extends State<HomeMovieScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Now Playing', style: kHeading6),
+              Text('Now Playing', style: titleLarge),
               Consumer<MovieListProvider>(builder: (context, data, child) {
                 final state = data.nowPlayingState;
                 return switch (state) {
                   LoadingState() => Center(child: CircularProgressIndicator()),
-                  SuccessState<List<Movie>>() => MovieList(state.value),
+                  SuccessState<List<Movie>>() => MovieBannerWidget(movies: state.value),
                   ErrorState<List<Movie>>() => Text(state.msg)
                 };
               }),
@@ -82,16 +83,7 @@ class _HomeMovieScreenState extends State<HomeMovieScreen> {
       children: [
         Text(
           title,
-          style: kHeading6,
-        ),
-        InkWell(
-          onTap: onTap,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [Text('See More'), Icon(Icons.arrow_forward_ios)],
-            ),
-          ),
+          style: titleLarge,
         ),
       ],
     );

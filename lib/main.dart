@@ -9,8 +9,8 @@ import 'package:flutter_tv_series/presentation/provider/movie_search_notifier.da
 import 'package:flutter_tv_series/presentation/provider/popular_movies_notifier.dart';
 import 'package:flutter_tv_series/presentation/provider/top_rated_movies_notifier.dart';
 import 'package:flutter_tv_series/presentation/provider/watchlist_movie_notifier.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'common/constants.dart';
 import 'common/utils.dart';
 import 'di/datasource_injection.dart' as datasourceDi;
 import 'di/provider_injection.dart' as providerDi;
@@ -61,7 +61,12 @@ class _MyHomePageState extends State<MyHomePage> {
       ],
       child: MaterialApp(
         title: 'TV Series',
-        theme: ThemeData.light(),
+        theme: ThemeData(
+            textTheme: GoogleFonts.robotoTextTheme(
+              Theme.of(context).textTheme
+            )
+        ),
+        themeMode: ThemeMode.system,
         home: HomeMovieScreen(),
         navigatorObservers: [routeObserver],
         onGenerateRoute: (RouteSettings settings) {
