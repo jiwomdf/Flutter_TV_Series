@@ -6,8 +6,6 @@ import 'package:flutter_tv_series/presentation/pages/watchlist/watchlist_movies_
 import 'package:flutter_tv_series/presentation/provider/movie_detail_notifier.dart';
 import 'package:flutter_tv_series/presentation/provider/movie_list_notifier.dart';
 import 'package:flutter_tv_series/presentation/provider/movie_search_notifier.dart';
-import 'package:flutter_tv_series/presentation/provider/popular_movies_notifier.dart';
-import 'package:flutter_tv_series/presentation/provider/top_rated_movies_notifier.dart';
 import 'package:flutter_tv_series/presentation/provider/watchlist_movie_notifier.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -48,12 +46,6 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         ChangeNotifierProvider(
           create: (_) => providerDi.locator<MovieSearchNotifier>(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => providerDi.locator<TopRatedMoviesNotifier>(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => providerDi.locator<PopularMoviesNotifier>(),
         ),
         ChangeNotifierProvider(
           create: (_) => providerDi.locator<WatchlistMovieNotifier>(),
