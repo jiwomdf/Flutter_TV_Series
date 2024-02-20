@@ -114,13 +114,6 @@ class _HomeMovieScreenState extends State<HomeMovieScreen> {
               Navigator.pushNamed(context, WatchlistMoviesScreen.ROUTE_NAME);
             },
           ),
-          ListTile(
-            onTap: () {
-              //Navigator.pushNamed(context, AboutPage.ROUTE_NAME);
-            },
-            leading: Icon(Icons.info_outline),
-            title: Text('About'),
-          ),
         ],
       ),
     );

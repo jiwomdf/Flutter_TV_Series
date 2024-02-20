@@ -54,10 +54,6 @@ class DetailContent extends StatelessWidget {
               ],
             ),
             Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
-                  color: isDarkMode ? Colors.black : Colors.white
-              ),
               padding: const EdgeInsets.only(left: 16 , right: 16),
               child: dataDetail(context),
             )
