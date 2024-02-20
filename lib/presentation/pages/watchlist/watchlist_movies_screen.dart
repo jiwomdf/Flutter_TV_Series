@@ -58,7 +58,7 @@ class _WatchlistMoviesScreenState extends State<WatchlistMoviesScreen>
                   return ListView.builder(
                     itemBuilder: (context, index) {
                       final movie = watchlistState.value[index];
-                      MovieCard(movie);
+                      return MovieCard(movie);
                     },
                     itemCount: watchlistState.value.length,
                   );

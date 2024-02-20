@@ -69,7 +69,6 @@ class MovieDetailNotifier extends ChangeNotifier {
 
   Future<void> addWatchlist(MovieDetail movie) async {
     final result = await saveWatchlist.saveWatchlist(movie);
-
     await result.fold(
       (failure) async {
         _watchlistMessage = failure.message;
@@ -78,13 +77,11 @@ class MovieDetailNotifier extends ChangeNotifier {
         _watchlistMessage = successMessage;
       },
     );
-
     await loadWatchlistStatus(movie.id);
   }
 
   Future<void> removeFromWatchlist(MovieDetail movie) async {
     final result = await removeWatchlist.removeWatchlist(movie);
-
     await result.fold(
       (failure) async {
         _watchlistMessage = failure.message;
@@ -93,7 +90,6 @@ class MovieDetailNotifier extends ChangeNotifier {
         _watchlistMessage = successMessage;
       },
     );
-
     await loadWatchlistStatus(movie.id);
   }
 

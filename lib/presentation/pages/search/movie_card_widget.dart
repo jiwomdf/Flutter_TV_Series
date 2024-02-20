@@ -21,11 +21,11 @@ class MovieCard extends StatelessWidget {
             arguments: movie.id,
           );
         },
-        child: Stack(
-          alignment: Alignment.bottomLeft,
-          children: [
-            Card(
-              child: Container(
+        child: Card(
+          child: Stack(
+            alignment: Alignment.bottomLeft,
+            children: [
+              Container(
                 margin: const EdgeInsets.only(
                   left: 16 + 80 + 16,
                   bottom: 8,
@@ -49,25 +49,26 @@ class MovieCard extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
-            Container(
-              margin: const EdgeInsets.only(
-                left: 16,
-                bottom: 16,
-              ),
-              child: ClipRRect(
-                child: CachedNetworkImage(
-                  imageUrl: '$BASE_IMAGE_URL${movie.posterPath}',
-                  width: 80,
-                  placeholder: (context, url) => Center(
-                    child: CircularProgressIndicator(),
-                  ),
-                  errorWidget: (context, url, error) => Icon(Icons.error),
+              Container(
+                margin: const EdgeInsets.only(
+                  left: 16,
+                  bottom: 8,
+                  top: 8
                 ),
-                borderRadius: BorderRadius.all(Radius.circular(8)),
+                child: ClipRRect(
+                  child: CachedNetworkImage(
+                    imageUrl: '$BASE_IMAGE_URL${movie.posterPath}',
+                    width: 80,
+                    placeholder: (context, url) => Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                    errorWidget: (context, url, error) => Icon(Icons.error),
+                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(8)),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
