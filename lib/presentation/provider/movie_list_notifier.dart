@@ -7,14 +7,14 @@ import '../../domain/usecases/get_top_rated_movies_usecase.dart';
 
 class MovieListProvider extends ChangeNotifier {
 
-  final GetNowPlayingMoviesUseCase getNowPlayingMovies;
-  final GetPopularMoviesUseCase getPopularMovies;
-  final GetTopRatedMoviesUseCase getTopRatedMovies;
+  final GetNowPlayingMoviesUseCase getNowPlayingMoviesUseCase;
+  final GetPopularMoviesUseCase getPopularMoviesUseCase;
+  final GetTopRatedMoviesUseCase getTopRatedMoviesUseCase;
 
   MovieListProvider({
-    required this.getNowPlayingMovies,
-    required this.getPopularMovies,
-    required this.getTopRatedMovies,
+    required this.getNowPlayingMoviesUseCase,
+    required this.getPopularMoviesUseCase,
+    required this.getTopRatedMoviesUseCase,
   });
 
   SealedState<List<Movie>> _nowPlayingState = LoadingState();
@@ -30,7 +30,7 @@ class MovieListProvider extends ChangeNotifier {
     _nowPlayingState = SealedState.loading();
     notifyListeners();
 
-    final result = await getNowPlayingMovies.getNowPlayingMovies();
+    final result = await getNowPlayingMoviesUseCase.getNowPlayingMovies();
     result.fold(
       (failure) {
         _nowPlayingState = SealedState.error(failure.message);
@@ -47,7 +47,7 @@ class MovieListProvider extends ChangeNotifier {
     _popularMoviesState = SealedState.loading();
     notifyListeners();
 
-    final result = await getPopularMovies.getPopularMovies();
+    final result = await getPopularMoviesUseCase.getPopularMovies();
     result.fold(
       (failure) {
         _popularMoviesState = SealedState.error(failure.message);
@@ -64,7 +64,7 @@ class MovieListProvider extends ChangeNotifier {
     _topRatedMoviesState = SealedState.loading();
     notifyListeners();
 
-    final result = await getTopRatedMovies.getTopRatedMovies();
+    final result = await getTopRatedMoviesUseCase.getTopRatedMovies();
     result.fold(
       (failure) {
         _topRatedMoviesState = SealedState.error(failure.message);

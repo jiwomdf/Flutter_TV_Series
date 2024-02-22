@@ -13,18 +13,18 @@ class MovieDetailNotifier extends ChangeNotifier {
   static const watchlistAddSuccessMessage = 'Added to Watchlist';
   static const watchlistRemoveSuccessMessage = 'Removed from Watchlist';
 
-  final GetMovieDetailUseCase getMovieDetail;
-  final GetMovieRecommendations getMovieRecommendations;
-  final GetWatchListStatusUseCase getWatchListStatus;
-  final SaveWatchlistUseCase saveWatchlist;
-  final RemoveWatchlistUseCase removeWatchlist;
+  final MovieDetailUseCase movieDetailUseCase;
+  final MovieRecommendationsUseCase movieRecommendationsUseCase;
+  final WatchListStatusUseCase watchListStatusUseCase;
+  final SaveWatchlistUseCase saveWatchlistUseCase;
+  final RemoveWatchlistUseCase removeWatchlistUseCase;
 
   MovieDetailNotifier({
-    required this.getMovieDetail,
-    required this.getMovieRecommendations,
-    required this.getWatchListStatus,
-    required this.saveWatchlist,
-    required this.removeWatchlist,
+    required this.movieDetailUseCase,
+    required this.movieRecommendationsUseCase,
+    required this.watchListStatusUseCase,
+    required this.saveWatchlistUseCase,
+    required this.removeWatchlistUseCase,
   });
 
   SealedState<MovieDetail> _movieState = SealedState.loading();
@@ -42,8 +42,8 @@ class MovieDetailNotifier extends ChangeNotifier {
   Future<void> fetchMovieDetail(int id) async {
     _movieState = SealedState.loading();
     notifyListeners();
-    final detailResult = await getMovieDetail.getMovieDetail(id);
-    final recommendationResult = await getMovieRecommendations.getMovieRecommendations(id);
+    final detailResult = await movieDetailUseCase.getMovieDetail(id);
+    final recommendationResult = await movieRecommendationsUseCase.getMovieRecommendations(id);
     detailResult.fold(
       (failure) {
         _movieState = SealedState.error(failure.message);
@@ -68,7 +68,7 @@ class MovieDetailNotifier extends ChangeNotifier {
   }
 
   Future<void> addWatchlist(MovieDetail movie) async {
-    final result = await saveWatchlist.saveWatchlist(movie);
+    final result = await saveWatchlistUseCase.saveWatchlist(movie);
     await result.fold(
       (failure) async {
         _watchlistMessage = failure.message;
@@ -81,7 +81,7 @@ class MovieDetailNotifier extends ChangeNotifier {
   }
 
   Future<void> removeFromWatchlist(MovieDetail movie) async {
-    final result = await removeWatchlist.removeWatchlist(movie);
+    final result = await removeWatchlistUseCase.removeWatchlist(movie);
     await result.fold(
       (failure) async {
         _watchlistMessage = failure.message;
@@ -94,7 +94,7 @@ class MovieDetailNotifier extends ChangeNotifier {
   }
 
   Future<void> loadWatchlistStatus(int id) async {
-    final result = await getWatchListStatus.isAddedToWatchlist(id);
+    final result = await watchListStatusUseCase.isAddedToWatchlist(id);
     _isAddedToWatchlist = result;
     notifyListeners();
   }

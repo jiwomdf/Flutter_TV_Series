@@ -25,7 +25,6 @@ class DatabaseHelper {
   Future<Database> _initDb() async {
     final path = await getDatabasesPath();
     final databasePath = '$path/ditonton.db';
-
     var db = await openDatabase(databasePath, version: 1, onCreate: _onCreate);
     return db;
   }
@@ -62,7 +61,6 @@ class DatabaseHelper {
       where: 'id = ?',
       whereArgs: [id],
     );
-
     if (results.isNotEmpty) {
       return results.first;
     } else {
@@ -73,7 +71,6 @@ class DatabaseHelper {
   Future<List<Map<String, dynamic>>> getWatchlistMovies() async {
     final db = await database;
     final List<Map<String, dynamic>> results = await db!.query(_tblWatchlist);
-
     return results;
   }
 }

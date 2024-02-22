@@ -1,9 +1,9 @@
 import '../repositories/movie_repository.dart';
 
-class GetWatchListStatusUseCase {
+class WatchListStatusUseCase {
   final MovieRepository repository;
 
-  GetWatchListStatusUseCase(this.repository);
+  WatchListStatusUseCase(this.repository);
 
   Future<bool> isAddedToWatchlist(int id) async {
     return repository.isAddedToWatchlist(id);

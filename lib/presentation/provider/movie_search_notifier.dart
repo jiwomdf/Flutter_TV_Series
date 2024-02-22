@@ -5,9 +5,9 @@ import '../../domain/entities/movie.dart';
 import '../../domain/usecases/search_movies_usecase.dart';
 
 class MovieSearchNotifier extends ChangeNotifier {
-  final SearchMoviesUseCase searchMovies;
+  final SearchMoviesUseCase searchMoviesUseCase;
 
-  MovieSearchNotifier({required this.searchMovies});
+  MovieSearchNotifier({required this.searchMoviesUseCase});
 
   SealedState<List<Movie>> _searchState = SealedState.success([]);
   SealedState<List<Movie>> get searchState => _searchState;
@@ -16,7 +16,7 @@ class MovieSearchNotifier extends ChangeNotifier {
     _searchState = SealedState.loading();
     notifyListeners();
 
-    final result = await searchMovies.searchMovies(query);
+    final result = await searchMoviesUseCase.searchMovies(query);
     result.fold(
       (failure) {
         _searchState = SealedState.error(failure.message);

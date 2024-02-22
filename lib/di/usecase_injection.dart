@@ -18,10 +18,10 @@ void init() {
   locator.registerLazySingleton(() => GetNowPlayingMoviesUseCase(locator()));
   locator.registerLazySingleton(() => GetPopularMoviesUseCase(locator()));
   locator.registerLazySingleton(() => GetTopRatedMoviesUseCase(locator()));
-  locator.registerLazySingleton(() => GetMovieDetailUseCase(locator()));
-  locator.registerLazySingleton(() => GetMovieRecommendations(locator()));
+  locator.registerLazySingleton(() => MovieDetailUseCase(locator()));
+  locator.registerLazySingleton(() => MovieRecommendationsUseCase(locator()));
   locator.registerLazySingleton(() => SearchMoviesUseCase(locator()));
-  locator.registerLazySingleton(() => GetWatchListStatusUseCase(locator()));
+  locator.registerLazySingleton(() => WatchListStatusUseCase(locator()));
   locator.registerLazySingleton(() => SaveWatchlistUseCase(locator()));
   locator.registerLazySingleton(() => RemoveWatchlistUseCase(locator()));
   locator.registerLazySingleton(() => GetWatchlistMoviesUseCase(locator()));
