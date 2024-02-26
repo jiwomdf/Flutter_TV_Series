@@ -3,7 +3,7 @@ import 'package:flutter_tv_series/common/constants.dart';
 import 'package:flutter_tv_series/common/state_enum.dart';
 import 'package:flutter_tv_series/common/utils.dart';
 import 'package:flutter_tv_series/domain/entities/movie.dart';
-import 'package:flutter_tv_series/presentation/pages/search/movie_card_widget.dart';
+import 'package:flutter_tv_series/presentation/pages/search/widget/movie_card_widget.dart';
 import 'package:flutter_tv_series/presentation/provider/watchlist_movie_notifier.dart';
 import 'package:provider/provider.dart';
 

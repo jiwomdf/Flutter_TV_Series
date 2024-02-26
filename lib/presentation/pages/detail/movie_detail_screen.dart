@@ -4,7 +4,7 @@ import 'package:flutter_tv_series/domain/entities/movie.dart';
 import 'package:flutter_tv_series/domain/entities/movie_detail.dart';
 import 'package:provider/provider.dart';
 import '../../provider/movie_detail_notifier.dart';
-import 'detail_content_widget.dart';
+import 'widget/detail_content_widget.dart';
 
 class MovieDetailScreen extends StatefulWidget {
   static const ROUTE_NAME = '/detail';

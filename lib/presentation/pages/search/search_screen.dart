@@ -3,7 +3,7 @@ import 'package:flutter_tv_series/common/state_enum.dart';
 import 'package:flutter_tv_series/domain/entities/movie.dart';
 import 'package:provider/provider.dart';
 import '../../provider/movie_search_notifier.dart';
-import 'movie_card_widget.dart';
+import 'widget/movie_card_widget.dart';
 
 class SearchScreen extends StatelessWidget {
   static const ROUTE_NAME = '/search';
