@@ -39,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => providerDi.locator<MovieListProvider>(),
+          create: (_) => providerDi.locator<MovieListNotifier>(),
         ),
         ChangeNotifierProvider(
           create: (_) => providerDi.locator<MovieDetailNotifier>(),

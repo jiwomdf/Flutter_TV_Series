@@ -9,7 +9,7 @@ final locator = GetIt.instance;
 void init() {
   // provider
   locator.registerFactory(
-        () => MovieListProvider(
+        () => MovieListNotifier(
       getNowPlayingMoviesUseCase: locator(),
       getPopularMoviesUseCase: locator(),
       getTopRatedMoviesUseCase: locator(),

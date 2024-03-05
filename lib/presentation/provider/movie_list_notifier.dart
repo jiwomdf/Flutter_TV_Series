@@ -5,13 +5,13 @@ import '../../domain/usecases/get_now_playing_movies_usecase.dart';
 import '../../domain/usecases/get_popular_movies_usecase.dart';
 import '../../domain/usecases/get_top_rated_movies_usecase.dart';
 
-class MovieListProvider extends ChangeNotifier {
+class MovieListNotifier extends ChangeNotifier {
 
   final GetNowPlayingMoviesUseCase getNowPlayingMoviesUseCase;
   final GetPopularMoviesUseCase getPopularMoviesUseCase;
   final GetTopRatedMoviesUseCase getTopRatedMoviesUseCase;
 
-  MovieListProvider({
+  MovieListNotifier({
     required this.getNowPlayingMoviesUseCase,
     required this.getPopularMoviesUseCase,
     required this.getTopRatedMoviesUseCase,

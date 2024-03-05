@@ -18,7 +18,7 @@ import 'movie_list_notifier.mocks.dart';
 ])
 void main() {
 
-  late MovieListProvider provider;
+  late MovieListNotifier provider;
   late GetNowPlayingMoviesUseCase getNowPlayingMoviesUseCase;
   late GetPopularMoviesUseCase getPopularMoviesUseCase;
   late GetTopRatedMoviesUseCase getTopRatedMoviesUseCase;
@@ -27,7 +27,7 @@ void main() {
     getNowPlayingMoviesUseCase = MockGetNowPlayingMoviesUseCase();
     getPopularMoviesUseCase = MockGetPopularMoviesUseCase();
     getTopRatedMoviesUseCase = MockGetTopRatedMoviesUseCase();
-    provider = MovieListProvider(
+    provider = MovieListNotifier(
         getNowPlayingMoviesUseCase: getNowPlayingMoviesUseCase,
         getPopularMoviesUseCase: getPopularMoviesUseCase,
         getTopRatedMoviesUseCase: getTopRatedMoviesUseCase)

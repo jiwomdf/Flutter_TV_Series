@@ -19,7 +19,7 @@ class _HomeMovieScreenState extends State<HomeMovieScreen> {
   void initState() {
     super.initState();
     Future.microtask(
-        () => Provider.of<MovieListProvider>(context, listen: false)
+        () => Provider.of<MovieListNotifier>(context, listen: false)
           ..fetchNowPlayingMovies()
           ..fetchPopularMovies()
           ..fetchTopRatedMovies()
@@ -38,7 +38,7 @@ class _HomeMovieScreenState extends State<HomeMovieScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text('Now Playing', style: titleLarge),
-              Consumer<MovieListProvider>(builder: (context, data, child) {
+              Consumer<MovieListNotifier>(builder: (context, data, child) {
                 final state = data.nowPlayingState;
                 return switch (state) {
                   LoadingState() => Center(child: CircularProgressIndicator()),
@@ -50,7 +50,7 @@ class _HomeMovieScreenState extends State<HomeMovieScreen> {
                 title: 'Popular',
                 onTap: (){}//() => Navigator.pushNamed(context, PopularMoviesPage.ROUTE_NAME),
               ),
-              Consumer<MovieListProvider>(builder: (context, data, child) {
+              Consumer<MovieListNotifier>(builder: (context, data, child) {
                 final state = data.popularMoviesState;
                 return switch (state) {
                   LoadingState() => Center(child: CircularProgressIndicator()),
@@ -62,7 +62,7 @@ class _HomeMovieScreenState extends State<HomeMovieScreen> {
                 title: 'Top Rated',
                 onTap: (){} //() => Navigator.pushNamed(context, TopRatedMoviesPage.ROUTE_NAME),
               ),
-              Consumer<MovieListProvider>(builder: (context, data, child) {
+              Consumer<MovieListNotifier>(builder: (context, data, child) {
                 final state = data.topRatedMoviesState;
                 return switch (state) {
                   LoadingState() => Center(child: CircularProgressIndicator()),
