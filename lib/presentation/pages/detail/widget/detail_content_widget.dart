@@ -19,9 +19,6 @@ class DetailContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final brightness = MediaQuery.of(context).platformBrightness;
-    bool isDarkMode = brightness == Brightness.dark;
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -30,7 +27,7 @@ class DetailContent extends StatelessWidget {
               children: [
                 CachedNetworkImage(
                   height: 350,
-                  width: screenWidth,
+                  width: MediaQuery.of(context).size.width,
                   fit: BoxFit.cover,
                   alignment: Alignment.topCenter,
                   imageUrl: 'https://image.tmdb.org/t/p/w500${movie.posterPath}',
