@@ -16,15 +16,15 @@ import 'home_movie_screen_test.mocks.dart';
 ])
 void main() {
 
-  late MockMovieListProvider mockMovieListProvider;
+  late MockMovieListNotifier mockMovieListNotifier;
 
   setUp(() => {
-    mockMovieListProvider = MockMovieListProvider()
+    mockMovieListNotifier = MockMovieListNotifier()
   });
 
   Widget _createScreen(Widget body) =>
       ChangeNotifierProvider<MovieListNotifier>(
-        create: (context) => mockMovieListProvider,
+        create: (context) => mockMovieListNotifier,
         child: MaterialApp(
             home: body
         ),
@@ -33,9 +33,9 @@ void main() {
   testWidgets('Loading should display CircularProgressIndicator when load the movies', (WidgetTester tester) async {
     provideDummy<SealedState<List<Movie>>>(SealedState.loading());
 
-    when(mockMovieListProvider.nowPlayingState).thenReturn(SealedState.loading());
-    when(mockMovieListProvider.popularMoviesState).thenReturn(SealedState.loading());
-    when(mockMovieListProvider.topRatedMoviesState).thenReturn(SealedState.loading());
+    when(mockMovieListNotifier.nowPlayingState).thenReturn(SealedState.loading());
+    when(mockMovieListNotifier.popularMoviesState).thenReturn(SealedState.loading());
+    when(mockMovieListNotifier.topRatedMoviesState).thenReturn(SealedState.loading());
 
     await tester.pumpWidget(_createScreen(HomeMovieScreen()));
     final titles = find.byType(CircularProgressIndicator);
@@ -46,9 +46,9 @@ void main() {
   testWidgets('Error should display Text when error load movies', (WidgetTester tester) async {
     provideDummy<SealedState<List<Movie>>>(SealedState.error("error"));
 
-    when(mockMovieListProvider.nowPlayingState).thenReturn(SealedState.error("error"));
-    when(mockMovieListProvider.popularMoviesState).thenReturn(SealedState.error("error"));
-    when(mockMovieListProvider.topRatedMoviesState).thenReturn(SealedState.error("error"));
+    when(mockMovieListNotifier.nowPlayingState).thenReturn(SealedState.error("error"));
+    when(mockMovieListNotifier.popularMoviesState).thenReturn(SealedState.error("error"));
+    when(mockMovieListNotifier.topRatedMoviesState).thenReturn(SealedState.error("error"));
 
     await tester.pumpWidget(_createScreen(HomeMovieScreen()));
     final titles = find.byType(Text);
@@ -59,9 +59,9 @@ void main() {
   testWidgets('Success should display MovieBannerWidget when success load movies', (WidgetTester tester) async {
     provideDummy<SealedState<List<Movie>>>(SealedState.error("error"));
 
-    when(mockMovieListProvider.nowPlayingState).thenReturn(SealedState.success(testMovieList));
-    when(mockMovieListProvider.popularMoviesState).thenReturn(SealedState.success(testMovieList));
-    when(mockMovieListProvider.topRatedMoviesState).thenReturn(SealedState.success(testMovieList));
+    when(mockMovieListNotifier.nowPlayingState).thenReturn(SealedState.success(testMovieList));
+    when(mockMovieListNotifier.popularMoviesState).thenReturn(SealedState.success(testMovieList));
+    when(mockMovieListNotifier.topRatedMoviesState).thenReturn(SealedState.success(testMovieList));
 
     await tester.pumpWidget(_createScreen(HomeMovieScreen()));
     final titles = find.byType(Text);
