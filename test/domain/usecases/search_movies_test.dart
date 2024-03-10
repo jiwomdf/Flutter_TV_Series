@@ -7,23 +7,19 @@ import '../../data/helpers/test_helper.mocks.dart';
 import '../../dummy_data/dummy_objects.dart';
 
 void main() {
-  late SearchMoviesUseCase usecase;
+  late SearchMoviesUseCase useCase;
   late MockMovieRepository mockMovieRepository;
 
   setUp(() {
     mockMovieRepository = MockMovieRepository();
-    usecase = SearchMoviesUseCase(mockMovieRepository);
+    useCase = SearchMoviesUseCase(mockMovieRepository);
   });
 
-  final tQuery = 'Spiderman';
-
   test('should get list of movies from the repository', () async {
-    // arrange
+    final tQuery = 'Spiderman';
     when(mockMovieRepository.searchMovies(tQuery))
         .thenAnswer((_) async => Right(testMovieList));
-    // act
-    final result = await usecase.searchMovies(tQuery);
-    // assert
+    final result = await useCase.searchMovies(tQuery);
     expect(result, Right(testMovieList));
   });
 }

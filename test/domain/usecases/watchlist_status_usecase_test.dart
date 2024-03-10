@@ -5,21 +5,18 @@ import 'package:mockito/mockito.dart';
 import '../../data/helpers/test_helper.mocks.dart';
 
 void main() {
-  late WatchListStatusUseCase usecase;
+  late WatchListStatusUseCase useCase;
   late MockMovieRepository mockMovieRepository;
 
   setUp(() {
     mockMovieRepository = MockMovieRepository();
-    usecase = WatchListStatusUseCase(mockMovieRepository);
+    useCase = WatchListStatusUseCase(mockMovieRepository);
   });
 
   test('should get watchlist status from repository', () async {
-    // arrange
     when(mockMovieRepository.isAddedToWatchlist(1))
         .thenAnswer((_) async => true);
-    // act
-    final result = await usecase.isAddedToWatchlist(1);
-    // assert
+    final result = await useCase.isAddedToWatchlist(1);
     expect(result, true);
   });
 }

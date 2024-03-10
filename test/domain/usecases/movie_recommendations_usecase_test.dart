@@ -6,22 +6,18 @@ import '../../data/helpers/test_helper.mocks.dart';
 import '../../dummy_data/dummy_objects.dart';
 
 void main() {
-  late MovieRecommendationsUseCase usecase;
+  late MovieRecommendationsUseCase useCase;
   late MockMovieRepository mockMovieRepository;
 
   setUp(() {
     mockMovieRepository = MockMovieRepository();
-    usecase = MovieRecommendationsUseCase(mockMovieRepository);
+    useCase = MovieRecommendationsUseCase(mockMovieRepository);
   });
 
-  test('should get list of movie recommendations from the repository',
-      () async {
-    // arrange
+  test('should get list of movie recommendations from the repository', () async {
     when(mockMovieRepository.getMovieRecommendations(1))
         .thenAnswer((_) async => Right(testMovieList));
-    // act
-    final result = await usecase.getMovieRecommendations(1);
-    // assert
+    final result = await useCase.getMovieRecommendations(1);
     expect(result, Right(testMovieList));
   });
 }

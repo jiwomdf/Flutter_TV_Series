@@ -6,25 +6,18 @@ import '../../data/helpers/test_helper.mocks.dart';
 import '../../dummy_data/dummy_objects.dart';
 
 void main() {
-  late PopularMoviesUseCase usecase;
-  late MockMovieRepository mockMovieRpository;
+  late PopularMoviesUseCase useCase;
+  late MockMovieRepository mockMovieRepository;
 
   setUp(() {
-    mockMovieRpository = MockMovieRepository();
-    usecase = PopularMoviesUseCase(mockMovieRpository);
+    mockMovieRepository = MockMovieRepository();
+    useCase = PopularMoviesUseCase(mockMovieRepository);
   });
 
-  group('GetPopularMovies Tests', () {
-    group('execute', () {
-      test('should get list of movies from the repository when execute function is called', () async {
-        // arrange
-        when(mockMovieRpository.getPopularMovies())
-            .thenAnswer((_) async => Right(testMovieList));
-        // act
-        final result = await usecase.getPopularMovies();
-        // assert
-        expect(result, Right(testMovieList));
-      });
-    });
+  test('should get list of movies from the repository when execute function is called', () async {
+    when(mockMovieRepository.getPopularMovies())
+        .thenAnswer((_) async => Right(testMovieList));
+    final result = await useCase.getPopularMovies();
+    expect(result, Right(testMovieList));
   });
 }
