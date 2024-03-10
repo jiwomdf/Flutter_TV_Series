@@ -63,7 +63,7 @@ void main() {
   });
 
 
-  test('return success message when removeWatchlist to database is success', () async {
+  test('return success message when getMovieById to database is success', () async {
 
     when(mockDatabaseHelper.getMovieById(1))
         .thenAnswer((_) async => testMovieMap);
