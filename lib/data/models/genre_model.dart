@@ -1,8 +1,6 @@
-import 'package:equatable/equatable.dart';
-
 import '../../domain/entities/genre.dart';
 
-class GenreModel extends Equatable {
+class GenreModel {
   final int id;
   final String name;
 
@@ -23,6 +21,4 @@ class GenreModel extends Equatable {
 
   Genre toEntity() => Genre(id: this.id, name: this.name);
 
-  @override
-  List<Object?> get props => [id, name];
 }

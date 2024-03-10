@@ -10,9 +10,9 @@ void init() {
   // provider
   locator.registerFactory(
         () => MovieListNotifier(
-      getNowPlayingMoviesUseCase: locator(),
-      getPopularMoviesUseCase: locator(),
-      getTopRatedMoviesUseCase: locator(),
+      nowPlayingMoviesUseCase: locator(),
+      popularMoviesUseCase: locator(),
+      topRatedMoviesUseCase: locator(),
     ),
   );
   locator.registerFactory(

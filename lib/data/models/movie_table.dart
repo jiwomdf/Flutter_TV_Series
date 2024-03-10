@@ -1,9 +1,7 @@
-import 'package:equatable/equatable.dart';
-
 import '../../domain/entities/movie.dart';
 import '../../domain/entities/movie_detail.dart';
 
-class MovieTable extends Equatable {
+class MovieTable {
   final int id;
   final String? title;
   final String? posterPath;
@@ -43,7 +41,4 @@ class MovieTable extends Equatable {
         posterPath: posterPath,
         title: title,
       );
-
-  @override
-  List<Object?> get props => [id, title, posterPath, overview];
 }

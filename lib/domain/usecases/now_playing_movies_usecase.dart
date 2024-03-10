@@ -4,10 +4,10 @@ import '../entities/movie.dart';
 import '../repositories/movie_repository.dart';
 
 
-class GetNowPlayingMoviesUseCase {
+class NowPlayingMoviesUseCase {
   final MovieRepository repository;
 
-  GetNowPlayingMoviesUseCase(this.repository);
+  NowPlayingMoviesUseCase(this.repository);
 
   Future<Either<Failure, List<Movie>>> getNowPlayingMovies() {
     return repository.getNowPlayingMovies();

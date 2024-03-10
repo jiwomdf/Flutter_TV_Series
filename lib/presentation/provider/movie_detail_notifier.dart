@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import '../../common/state_enum.dart';
 import '../../domain/entities/movie.dart';
 import '../../domain/entities/movie_detail.dart';
-import '../../domain/usecases/get_movie_detail_usecase.dart';
-import '../../domain/usecases/get_movie_recommendations_usecase.dart';
-import '../../domain/usecases/get_watchlist_status_usecase.dart';
+import '../../domain/usecases/movie_detail_usecase.dart';
+import '../../domain/usecases/movie_recommendations_usecase.dart';
+import '../../domain/usecases/watchlist_status_usecase.dart';
 import '../../domain/usecases/remove_watchlist_usecase.dart';
 import '../../domain/usecases/save_watchlist_usecase.dart';
 

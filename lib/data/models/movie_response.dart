@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'movie_model.dart';
 
-class MovieResponse extends Equatable {
+class MovieResponse {
   final List<MovieModel> movieList;
 
   MovieResponse({required this.movieList});
@@ -11,11 +11,4 @@ class MovieResponse extends Equatable {
             .map((x) => MovieModel.fromJson(x))
             .where((element) => element.posterPath != null)),
       );
-
-  Map<String, dynamic> toJson() => {
-        "results": List<dynamic>.from(movieList.map((x) => x.toJson())),
-      };
-
-  @override
-  List<Object> get props => [movieList];
 }

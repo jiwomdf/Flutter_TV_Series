@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_tv_series/common/state_enum.dart';
-import 'package:flutter_tv_series/domain/usecases/get_movie_detail_usecase.dart';
-import 'package:flutter_tv_series/domain/usecases/get_movie_recommendations_usecase.dart';
-import 'package:flutter_tv_series/domain/usecases/get_watchlist_status_usecase.dart';
+import 'package:flutter_tv_series/domain/usecases/movie_detail_usecase.dart';
+import 'package:flutter_tv_series/domain/usecases/movie_recommendations_usecase.dart';
+import 'package:flutter_tv_series/domain/usecases/watchlist_status_usecase.dart';
 import 'package:flutter_tv_series/domain/usecases/remove_watchlist_usecase.dart';
 import 'package:flutter_tv_series/domain/usecases/save_watchlist_usecase.dart';
 import 'package:flutter_tv_series/presentation/provider/movie_detail_notifier.dart';
