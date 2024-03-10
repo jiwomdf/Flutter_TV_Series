@@ -34,9 +34,9 @@ void main(){
 
     final result = await dataSource.getNowPlayingMovies();
 
-    expect(result, equals(MovieResponse.fromJson(
+    expect(result.toString(), equals(MovieResponse.fromJson(
         json.decode(readJson('dummy_data/now_playing.json')))
-        .movieList));
+        .movieList.toString()));
   });
 
   test('getNowPlayingMovies should throw a ServerException when the response code is 500', () async {
@@ -57,9 +57,9 @@ void main(){
 
     final result = await dataSource.getPopularMovies();
 
-    expect(result, MovieResponse.fromJson(
+    expect(result.toString(), MovieResponse.fromJson(
         json.decode(readJson('dummy_data/popular.json')))
-        .movieList);
+        .movieList.toString());
   });
 
   test('getPopularMovies should throw a ServerException when the response code is 500', () async {
@@ -80,9 +80,9 @@ void main(){
 
     final result = await dataSource.getTopRatedMovies();
 
-    expect(result, MovieResponse.fromJson(
+    expect(result.toString(), MovieResponse.fromJson(
         json.decode(readJson('dummy_data/top_rated.json')))
-        .movieList);
+        .movieList.toString());
   });
 
   test('getTopRatedMovies should throw ServerException when response code is 500', () async {
@@ -104,8 +104,9 @@ void main(){
 
     final result = await dataSource.getMovieDetail(id);
 
-    expect(result, equals(MovieDetailResponse.fromJson(
-        json.decode(readJson('dummy_data/movie_detail.json')))));
+    expect(result.toString(), equals(MovieDetailResponse.fromJson(
+        json.decode(readJson('dummy_data/movie_detail.json'))).toString()
+    ));
   });
 
   test('getMovieDetail should throw Server Exception when the response code is 500', () async {
@@ -129,9 +130,9 @@ void main(){
 
     final result = await dataSource.getMovieRecommendations(id);
 
-    expect(result, equals(MovieResponse.fromJson(
+    expect(result.toString(), equals(MovieResponse.fromJson(
         json.decode(readJson('dummy_data/movie_recommendations.json')))
-        .movieList));
+        .movieList.toString()));
   });
 
   test('getMovieRecommendations should throw Server Exception when the response code is 500', () async {
@@ -156,9 +157,9 @@ void main(){
 
     final result = await dataSource.searchMovies(tQuery);
 
-    expect(result, MovieResponse.fromJson(
+    expect(result.toString(), MovieResponse.fromJson(
         json.decode(readJson('dummy_data/search_spiderman_movie.json')))
-        .movieList);
+        .movieList.toString());
   });
 
   test('searchMovies should throw ServerException when response code is 500', () async {
