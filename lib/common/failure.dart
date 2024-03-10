@@ -1,5 +1,3 @@
-import 'package:equatable/equatable.dart';
-
 abstract class Failure {
   final String message;
 
@@ -8,12 +6,4 @@ abstract class Failure {
 
 class ServerFailure extends Failure {
   ServerFailure(String message) : super(message);
-}
-
-class ConnectionFailure extends Failure {
-  ConnectionFailure(String message) : super(message);
-}
-
-class DatabaseFailure extends Failure {
-  DatabaseFailure(String message) : super(message);
 }

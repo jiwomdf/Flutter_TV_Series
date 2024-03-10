@@ -8,9 +8,8 @@ import 'package:flutter_tv_series/domain/usecases/search_movies_usecase.dart';
 import 'package:flutter_tv_series/presentation/provider/movie_search_notifier.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-
 import '../../../dummy_data/dummy_objects.dart';
-import 'movie_search_notifier.mocks.dart';
+import 'movie_search_notifier_test.mocks.dart';
 
 @GenerateMocks([
   SearchMoviesUseCase

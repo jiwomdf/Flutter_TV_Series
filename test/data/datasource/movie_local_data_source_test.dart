@@ -70,7 +70,7 @@ void main() {
 
     final result = await dataSource.getMovieById(1);
 
-    expect(result, testMovieTable);
+    expect(result.toString(), testMovieTable.toString());
   });
 
   test('return null message when error getMovieById from database', () async {

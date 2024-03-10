@@ -26,8 +26,6 @@ class MovieRepositoryImpl implements MovieRepository {
       return Right(result.map((model) => model.toEntity()).toList());
     } on ServerException {
       return Left(ServerFailure(''));
-    } on SocketException {
-      return Left(ConnectionFailure('Failed to connect to the network'));
     }
   }
 
@@ -38,8 +36,6 @@ class MovieRepositoryImpl implements MovieRepository {
       return Right(result.toEntity());
     } on ServerException {
       return Left(ServerFailure(''));
-    } on SocketException {
-      return Left(ConnectionFailure('Failed to connect to the network'));
     }
   }
 
@@ -50,8 +46,6 @@ class MovieRepositoryImpl implements MovieRepository {
       return Right(result.map((model) => model.toEntity()).toList());
     } on ServerException {
       return Left(ServerFailure(''));
-    } on SocketException {
-      return Left(ConnectionFailure('Failed to connect to the network'));
     }
   }
 
@@ -62,8 +56,6 @@ class MovieRepositoryImpl implements MovieRepository {
       return Right(result.map((model) => model.toEntity()).toList());
     } on ServerException {
       return Left(ServerFailure(''));
-    } on SocketException {
-      return Left(ConnectionFailure('Failed to connect to the network'));
     }
   }
 
@@ -74,8 +66,6 @@ class MovieRepositoryImpl implements MovieRepository {
       return Right(result.map((model) => model.toEntity()).toList());
     } on ServerException {
       return Left(ServerFailure(''));
-    } on SocketException {
-      return Left(ConnectionFailure('Failed to connect to the network'));
     }
   }
 
@@ -86,8 +76,6 @@ class MovieRepositoryImpl implements MovieRepository {
       return Right(result.map((model) => model.toEntity()).toList());
     } on ServerException {
       return Left(ServerFailure(''));
-    } on SocketException {
-      return Left(ConnectionFailure('Failed to connect to the network'));
     }
   }
 
@@ -97,8 +85,6 @@ class MovieRepositoryImpl implements MovieRepository {
       final result =
           await localDataSource.insertWatchlist(MovieTable.fromEntity(movie));
       return Right(result);
-    } on DatabaseException catch (e) {
-      return Left(DatabaseFailure(e.message));
     } catch (e) {
       throw e;
     }
@@ -110,8 +96,8 @@ class MovieRepositoryImpl implements MovieRepository {
       final result =
           await localDataSource.removeWatchlist(MovieTable.fromEntity(movie));
       return Right(result);
-    } on DatabaseException catch (e) {
-      return Left(DatabaseFailure(e.message));
+    } catch (e) {
+      throw e;
     }
   }
 

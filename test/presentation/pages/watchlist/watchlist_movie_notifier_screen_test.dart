@@ -8,7 +8,7 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:provider/provider.dart';
 import '../../../dummy_data/dummy_objects.dart';
-import 'watchlist_movie_notifier.mocks.dart';
+import 'watchlist_movie_notifier_screen_test.mocks.dart';
 
 @GenerateMocks([
   WatchlistMovieNotifier
